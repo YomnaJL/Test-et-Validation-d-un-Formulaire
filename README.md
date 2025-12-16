@@ -2,23 +2,10 @@
 
 [![Robot Framework](https://img.shields.io/badge/Robot%20Framework-000000?style=for-the-badge&logo=robot-framework&logoColor=white)](https://robotframework.org/)
 [![Selenium](https://img.shields.io/badge/Selenium-43B02A?style=for-the-badge&logo=selenium&logoColor=white)](https://www.selenium.dev/)
-[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-[![LaTeX](https://img.shields.io/badge/LaTeX-008080?style=for-the-badge&logo=latex&logoColor=white)](https://www.latex-project.org/)
 
 > Suite de tests automatisés complète pour valider un formulaire d'inscription web avec Robot Framework et Selenium.
 
-## 📋 Table des Matières
 
-- [À Propos](#-à-propos)
-- [Fonctionnalités](#-fonctionnalités)
-- [Prérequis](#-prérequis)
-- [Installation](#-installation)
-- [Utilisation](#-utilisation)
-- [Architecture des Tests](#-architecture-des-tests)
-- [Résultats](#-résultats)
-- [Documentation](#-documentation)
-- [Contribution](#-contribution)
-- [Licence](#-licence)
 
 ## 🎯 À Propos
 
@@ -76,10 +63,6 @@ Ce projet implémente une suite complète de **14 tests automatisés** pour vali
 - **Robot Framework** >= 4.0
 - **SeleniumLibrary** >= 5.0
 
-### Pour la Documentation LaTeX
-
-- **LaTeX** (TeXLive, MiKTeX, ou MacTeX)
-- Packages : `tikz`, `pgfplots`, `tcolorbox`, `listings`, etc.
 
 ## 🚀 Installation
 
@@ -90,121 +73,7 @@ git clone https://github.com/votre-username/test-validation-formulaire.git
 cd test-validation-formulaire
 ```
 
-### 2. Créer un Environnement Virtuel (Recommandé)
 
-```bash
-# Créer l'environnement virtuel
-python -m venv venv
-
-# Activer l'environnement
-# Sur Windows
-venv\Scripts\activate
-# Sur Linux/Mac
-source venv/bin/activate
-```
-
-### 3. Installer les Dépendances
-
-```bash
-pip install -r requirements.txt
-```
-
-**Contenu de `requirements.txt` :**
-```
-robotframework>=6.0
-robotframework-seleniumlibrary>=6.0
-selenium>=4.0
-```
-
-### 4. Installer ChromeDriver
-
-#### Option A : Installation Automatique
-```bash
-pip install webdriver-manager
-```
-
-#### Option B : Installation Manuelle
-1. Télécharger depuis [ChromeDriver Downloads](https://chromedriver.chromium.org/downloads)
-2. Placer le binaire dans votre PATH système
-
-### 5. Vérifier l'Installation
-
-```bash
-robot --version
-python -c "import selenium; print(selenium.__version__)"
-```
-
-## 📖 Utilisation
-
-### Exécuter Tous les Tests
-
-```bash
-robot tests/formulaire_inscription.robot
-```
-
-### Exécuter un Test Spécifique
-
-```bash
-robot -t "Test 01 : Vérifier les Champs Obligatoires" tests/formulaire_inscription.robot
-```
-
-### Exécuter par Catégorie
-
-```bash
-# Tests de sécurité uniquement
-robot -i securite tests/formulaire_inscription.robot
-
-# Tests de validation uniquement
-robot -i validation tests/formulaire_inscription.robot
-```
-
-### Générer des Rapports Détaillés
-
-```bash
-robot --outputdir results --loglevel DEBUG tests/formulaire_inscription.robot
-```
-
-Les rapports générés se trouvent dans le dossier `results/` :
-- `report.html` - Rapport de synthèse
-- `log.html` - Log détaillé avec captures d'écran
-- `output.xml` - Données brutes
-
-### Options Utiles
-
-```bash
-# Exécution en mode headless (sans interface graphique)
-robot -v BROWSER:headlesschrome tests/formulaire_inscription.robot
-
-# Exécution avec Firefox
-robot -v BROWSER:Firefox tests/formulaire_inscription.robot
-
-# Ralentir l'exécution pour observer
-robot -v SELENIUM_SPEED:1s tests/formulaire_inscription.robot
-```
-
-## 🏗️ Architecture des Tests
-
-```
-test-validation-formulaire/
-│
-├── tests/
-│   └── formulaire_inscription.robot    # Suite de tests principale
-│
-├── docs/
-│   ├── rapport_latex.tex               # Documentation LaTeX
-│   └── rapport_latex.pdf               # PDF compilé
-│
-├── results/                             # Rapports générés (gitignore)
-│   ├── log.html
-│   ├── report.html
-│   └── output.xml
-│
-├── screenshots/                         # Captures d'écran (gitignore)
-│
-├── requirements.txt                     # Dépendances Python
-├── .gitignore
-└── README.md
-```
 
 ## 📝 Structure d'un Test
 
@@ -361,23 +230,7 @@ Le rapport PDF contient :
 - ✅ Score de qualité global
 - ✅ Annexes techniques
 
-## 🐛 Problèmes Connus et Solutions
 
-### Erreur : "ChromeDriver not found"
-
-**Solution :**
-```bash
-pip install webdriver-manager
-```
-
-### Erreur : "Element not found"
-
-**Cause :** La page n'est pas complètement chargée
-
-**Solution :** Augmenter le délai Selenium :
-```robot
-Set Selenium Speed    1s
-```
 
 ### Email déjà existant
 
@@ -397,65 +250,8 @@ ${EMAIL}    jean.dupont.test011@test.com  # Incrémenter le numéro
 Wait Until Page Contains Element    ${LOC_BOUTON}    timeout=10s
 ```
 
-## 🔐 Bonnes Pratiques de Sécurité
 
-⚠️ **Ne jamais** commettre dans Git :
-- Identifiants réels
-- Mots de passe de production
-- Clés API
-- Données personnelles
 
-✅ **Recommandations :**
-- Utiliser des données de test fictives
-- Isoler les tests dans un environnement dédié
-- Nettoyer les données après chaque exécution
-
-## 🤝 Contribution
-
-Les contributions sont les bienvenues ! Voici comment participer :
-
-### 1. Fork le Projet
-
-```bash
-git clone https://github.com/votre-username/test-validation-formulaire.git
-```
-
-### 2. Créer une Branche
-
-```bash
-git checkout -b feature/nouveau-test
-```
-
-### 3. Commit vos Changements
-
-```bash
-git commit -m "Ajout d'un test pour la validation du téléphone"
-```
-
-### 4. Push vers la Branche
-
-```bash
-git push origin feature/nouveau-test
-```
-
-### 5. Ouvrir une Pull Request
-
-### Standards de Code
-
-- Suivre la convention de nommage Robot Framework
-- Commenter les tests complexes
-- Ajouter une documentation pour chaque nouveau test
-- Tester localement avant de soumettre
-
-## 📋 TODO List
-
-- [ ] Ajouter des tests de compatibilité multi-navigateurs
-- [ ] Implémenter des tests de charge
-- [ ] Ajouter des tests d'accessibilité (WCAG)
-- [ ] Intégrer dans un pipeline CI/CD
-- [ ] Ajouter des tests API REST
-- [ ] Créer des tests de régression visuels
-- [ ] Ajouter support pour l'exécution parallèle
 
 ## 📊 Statistiques du Projet
 
@@ -486,18 +282,10 @@ git push origin feature/nouveau-test
 
 ## 📞 Contact et Support
 
-- **Auteur :** [Votre Nom]
-- **Email :** votre.email@example.com
-- **LinkedIn :** [Votre Profil](https://linkedin.com/in/votre-profil)
-- **Issues :** [GitHub Issues](https://github.com/votre-username/test-validation-formulaire/issues)
+- **Auteur :** Yomna JLassi
+- **Email :** yomnajlassikhardani@gmail.com
 
-## 📄 Licence
 
-Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
-
----
-
-<div align="center">
 
 **⭐ Si ce projet vous a été utile, n'oubliez pas de lui donner une étoile ! ⭐**
 
